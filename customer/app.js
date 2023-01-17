@@ -1,35 +1,53 @@
 const api_url = "http://localhost:3000/customers";
-var data;
 async function getApiData(url) {
   const response = await fetch(url);
-  data = await response.json();
+  var data = await response.json();
   show(data);
 }
 getApiData(api_url);
-
-let customersList = document.getElementsByClassName("customer");
+let customerContainer = document.getElementById("customer-container");
 
 function show(data) {
-  let i = 0;
   for (obj of data) {
     let customer = document.createElement("div");
     customer.innerHTML = obj.name;
     customer.id = obj.id;
-    customersList[i].appendChild(customer);
-    i++;
+    customer.classList = "customer";
+
+    customer.addEventListener("click", function () {
+      showDetails(customer.id, data);
+    });
+    customerContainer.appendChild(customer);
   }
 }
 
-function showDetails(id) {
-  let obj = data[id];
+function showDetails(id, data) {
+  let obj = data[id - 1];
+  let len = Object.keys(obj).length;
+  const detailContainer = document.getElementById("detail-box");
+  detailContainer.innerHTML = "";
 
-  let titleList = document.getElementsByClassName("title");
-  let contentList = document.getElementsByClassName("content");
-  let box = document.getElementById("detail-box");
+  let heading = document.createElement("h2");
+  heading.innerHTML = "Customer- " + obj.id + " -Details";
+  detailContainer.appendChild(heading);
 
-  for (let i = 0; i < 8; i++) {
-    titleList[i].innerHTML = Object.keys(obj)[i];
-    contentList[i].innerHTML = obj[Object.keys(obj)[i]];
+  for (let i = 0; i < len; i++) {
+    let section = document.createElement("div");
+    section.classList = "section";
+    for (let j = 0; j < 2; j++) {
+      if (j === 0) {
+        let title = document.createElement("p");
+        title.classList = "title";
+        title.innerHTML = Object.keys(obj)[i];
+        section.appendChild(title);
+      } else {
+        let content = document.createElement("p");
+        content.classList = "content";
+        content.innerHTML = obj[Object.keys(obj)[i]];
+        section.appendChild(content);
+      }
+    }
+    detailContainer.appendChild(section);
   }
-  box.style.display = "block";
+  detailContainer.style.display = "block";
 }

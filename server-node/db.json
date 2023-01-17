@@ -49,6 +49,46 @@
       "age": 24,
       "isAdmin": false,
       "cnic": "111111111111"
+    },
+    {
+      "id": 6,
+      "username": "abc6",
+      "password": "123",
+      "name": "Marius six",
+      "father_name": "six's father",
+      "age": 24,
+      "isAdmin": false,
+      "cnic": "111111111111"
+    },
+    {
+      "id": 7,
+      "username": "abc7",
+      "password": "123",
+      "name": "Marius seven",
+      "father_name": "seven's father",
+      "age": 24,
+      "isAdmin": true,
+      "cnic": "111111111111"
+    },
+    {
+      "id": 8,
+      "username": "abc8",
+      "password": "123",
+      "name": "Marius eight",
+      "father_name": "eight's father",
+      "age": 21,
+      "isAdmin": false,
+      "cnic": "111111111111"
+    },
+    {
+      "id": 9,
+      "username": "abc9",
+      "password": "123",
+      "name": "Marius nine",
+      "father_name": "nine's father",
+      "age": 20,
+      "isAdmin": true,
+      "cnic": "111111111111"
     }
   ]
 }
